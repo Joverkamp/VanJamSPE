@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string.h>
 #include <queue>
@@ -31,5 +32,15 @@ class SafeQueue{
       q.pop();
       m.unlock();
       return retVal;
+    }
+
+    bool checkDone(){
+        return streamEnd;
+    }
+
+    void endStream(){
+        m.lock();
+        streamEnd = true;
+        m.unlock();
     }
 };
