@@ -1,13 +1,13 @@
 #pragma once
 #include <iostream>
-#include "GenericOperator.h"
+//#include "GenericOperator.h"
+
+class GenericOperator;
 
 class Operator {
     private:
-        GenericOperator* Op;
+        GenericOperator* downstreamOp;
 
     public:
-        void connectTo(GenericOperator* op){
-            std::cout << "I am connected." << std::endl;
-        }
+        void connectTo(GenericOperator* op);
 };

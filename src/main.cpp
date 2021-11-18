@@ -3,10 +3,7 @@
 #include <fstream>
 #include <algorithm>
 #include <vector>
-#include "processStream.h"
-#include "Operator.h"
-#include "GenericOperator.h"
-#include "IOp.h"
+#include "VanJamSPE.h"
 
 std::string revWord(std::string word){
   reverse(word.begin(), word.end());
@@ -22,8 +19,7 @@ int main(){
   processStream(inFileName, &revWord, outFileName);
 */
 
-  IOp i;
-  i.generateData();
+  std::cout << "Hello SPE" << std::endl;
 
   return 0;
 
