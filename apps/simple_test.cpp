@@ -35,6 +35,12 @@ int main(){
   op1.connectTo(&op2);
   op2.connectTo(&op3);
 
+  Engine engine;
+  engine.registerInputOperator(&op1);
+  engine.registerGenericOperator(&op2);
+  engine.registerGenericOperator(&op3);
+  engine.run();
+
   return 0;
 
 }

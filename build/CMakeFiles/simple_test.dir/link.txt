@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/simple_test.dir/apps/simple_test.cpp.o  -o simple_test   -L/home/overjam/ta/VanJamSPE/build  -Wl,-rpath,/home/overjam/ta/VanJamSPE/build libVanJamSPE.a 

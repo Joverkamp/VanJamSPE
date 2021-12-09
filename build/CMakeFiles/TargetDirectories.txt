@@ -1,0 +1,4 @@
+/home/overjam/ta/VanJamSPE/build/CMakeFiles/rebuild_cache.dir
+/home/overjam/ta/VanJamSPE/build/CMakeFiles/edit_cache.dir
+/home/overjam/ta/VanJamSPE/build/CMakeFiles/simple_test.dir
+/home/overjam/ta/VanJamSPE/build/CMakeFiles/VanJamSPE.dir
