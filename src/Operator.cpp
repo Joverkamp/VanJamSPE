@@ -1,8 +1,13 @@
-
 #include "Operator.h"
+#include "GenericOperator.h"
 
-
-void Operator::connectTo(GenericOperator* op) {
-    downstreamOp = op;
-    std::cout << "I am connected." << std::endl;
+void Operator::connectTo(GenericOperator* op) { 
+  downstreamOp = op;
 }
+
+void Operator::emit(int data){
+  downstreamOp->inQueue.push(data);
+}
+
+
+

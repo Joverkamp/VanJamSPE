@@ -35,12 +35,12 @@ class SafeQueue{
     }
 
     bool checkDone(){
-        return streamEnd;
+      return streamEnd;
     }
 
     void endStream(){
-        m.lock();
-        streamEnd = true;
-        m.unlock();
+      m.lock();
+      streamEnd = true;
+      m.unlock();
     }
 };

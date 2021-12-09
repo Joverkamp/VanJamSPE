@@ -1,12 +1,13 @@
 #pragma once
-#include <iostream>
 
 class GenericOperator;
 
 class Operator {
-    private:
-        GenericOperator* downstreamOp;
+  private:
+    GenericOperator* downstreamOp;
 
-    public:
-        void connectTo(GenericOperator* op);
+  public:
+    void emit(int data);
+
+    void connectTo(GenericOperator* op);
 };
