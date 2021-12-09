@@ -1,2 +1,0 @@
-/usr/bin/ar qc libVanJamSPE.a  CMakeFiles/VanJamSPE.dir/src/Operator.cpp.o CMakeFiles/VanJamSPE.dir/src/Engine.cpp.o
-/usr/bin/ranlib libVanJamSPE.a
