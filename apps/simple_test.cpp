@@ -27,10 +27,9 @@ class NumbersOp : public InputOperator {
 
 int main(){
 
-  // Read input file from "../apps/simple_test.in_data"
-  PrintOp op3;
-  IncrementOp op2; 
   NumbersOp op1;
+  IncrementOp op2; 
+  PrintOp op3;
 
   op1.connectTo(&op2);
   op2.connectTo(&op3);
