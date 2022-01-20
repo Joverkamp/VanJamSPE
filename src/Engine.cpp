@@ -15,19 +15,22 @@ void Engine::run() {
   // Launch input thread(s)
   std::vector<std::thread> inputThreads;
   for(auto inputOp : inputOps) {
-    inputThreads.push_back( std::thread(&InputOperator::generateData, inputOp) );
+    inputThreads.push_back( std::thread(&InputOperator::generate, inputOp) );
   }
 
-
-  // TODO: Launch generic threads
-  // While Not all operators are done
-    // For each not done operator (Since some are still running)
-      // Process data
-
+  std::vector<std::thread> genericThreads;
+  for(auto genericOp : genericOps) {
+    inputThreads.push_back( std::thread(&GenericOperator::execute, genericOp) );
+  }
 
   // Wait/join inputThreads
-  for(auto &inputThread : inputThreads)
+  for(auto &inputThread : inputThreads){
     inputThread.join();
+  }
+
+  for(auto &genericThread : genericThreads){
+    genericThread.join();
+  }
 
 
   // Done.

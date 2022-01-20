@@ -3,8 +3,8 @@
 class GenericOperator;
 
 class Operator {
-  private:
-    GenericOperator* downstreamOp;
+  protected:
+    GenericOperator* downstreamOp = nullptr;
 
   public:
     void emit(int data);

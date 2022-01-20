@@ -5,6 +5,7 @@
 class PrintOp : public GenericOperator {
   public:  
     void processData(int data){
+      //std::cout << "printOp " <<  data << std::endl;
       std::cout << data << std::endl;
     }
 };
@@ -12,6 +13,7 @@ class PrintOp : public GenericOperator {
 class IncrementOp : public GenericOperator {
   public:  
     void processData(int data){
+      //std::cout << "incrementOp emitting(" << data+1 << ")\n";
       emit(data+1);    
     }
 };
@@ -20,7 +22,7 @@ class NumbersOp : public InputOperator {
   public:  
     void generateData(){
       for(int i = 0; i < 10; i++){
-        //std::cout << "emitting(" << i << ")\n";
+        //std::cout << "numbersOp emitting(" << i << ")\n";
         emit(i);
       }
     }
