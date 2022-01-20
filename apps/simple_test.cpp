@@ -3,37 +3,45 @@
 #include "VanJamSPE.h"
 
 class PrintOp : public GenericOperator {
-
-  void processData(int data){
-    std::cout << data << std::endl;
-  }
+  public:  
+    void processData(int data){
+      //std::cout << "printOp " <<  data << std::endl;
+      std::cout << data << std::endl;
+    }
 };
 
 class IncrementOp : public GenericOperator {
-
-  void processData(int data){
-    emit(data+1);    
-  }
+  public:  
+    void processData(int data){
+      //std::cout << "incrementOp emitting(" << data+1 << ")\n";
+      emit(data+1);    
+    }
 };
 
 class NumbersOp : public InputOperator {
-  
-  void generateData(){
-    for(int i = 0; i < 100; i++){
-      emit(i);
+  public:  
+    void generateData(){
+      for(int i = 0; i < 10; i++){
+        //std::cout << "numbersOp emitting(" << i << ")\n";
+        emit(i);
+      }
     }
-  }
 };
 
 int main(){
 
-  // Read input file from "../apps/simple_test.in_data"
-  PrintOp op3;
-  IncrementOp op2; 
   NumbersOp op1;
+  IncrementOp op2; 
+  PrintOp op3;
 
   op1.connectTo(&op2);
   op2.connectTo(&op3);
+
+  Engine engine;
+  engine.registerInputOperator(&op1);
+  engine.registerGenericOperator(&op2);
+  engine.registerGenericOperator(&op3);
+  engine.run();
 
   return 0;
 

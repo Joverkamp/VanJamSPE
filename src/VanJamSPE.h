@@ -4,3 +4,4 @@
 #include "Operator.h"
 #include "GenericOperator.h"
 #include "InputOperator.h"
+#include "Engine.h"

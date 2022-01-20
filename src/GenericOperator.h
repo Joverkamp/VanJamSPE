@@ -5,7 +5,7 @@
 
 class GenericOperator : public Operator {
   public:
-    virtual void processData(int data) = 0; //user defined
+    virtual void processData(int data) = 0;
     SafeQueue<int> inQueue;
-    void execute() {};
+    void execute();
 };
