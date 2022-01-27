@@ -3,6 +3,7 @@
 
 void Operator::connectTo(GenericOperator* op) { 
   downstreamOp = op;
+  downstreamOp->numInputs += 1;
 }
 
 void Operator::emit(int data){
