@@ -4,17 +4,17 @@
 
 class PrintOp : public GenericOperator {
   public:  
-    void processData(int data){
+    void processData(std::any data){
       //std::cout << "printOp " <<  data << std::endl;
-      std::cout << data << std::endl;
+      std::cout << std::any_cast<int>(data) << std::endl;
     }
 };
 
 class IncrementOp : public GenericOperator {
   public:  
-    void processData(int data){
+    void processData(std::any data){
       //std::cout << "incrementOp emitting(" << data+1 << ")\n";
-      emit(data+1);    
+      emit(std::any_cast<int>(data)+1);    
     }
 };
 

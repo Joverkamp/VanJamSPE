@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <any>
 
 class GenericOperator;
 
@@ -8,7 +9,7 @@ class Operator {
     //GenericOperator* downstreamOp = nullptr;
     std::vector<GenericOperator*> downstreamOps;
   public:
-    void emit(int data);
+    void emit(std::any data);
 
     void connectTo(GenericOperator* op);
 };
