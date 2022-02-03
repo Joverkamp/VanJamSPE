@@ -2,16 +2,19 @@
 
 
 void GenericOperator::execute(){
-  //while(inQueue.checkDone() == false || inQueue.empty() == false){
+  //process data while stream is not closed and queue isnot empty
   while(numInputs != numInputsDone || inQueue.empty() == false){
     if(inQueue.empty() == false){
       processData(inQueue.pop());  
     }
   }
-  if(downstreamOp != nullptr){
-    //may need a mutex on this TODO
-    downstreamOp->numInputsDone += 1;
-    downstreamOp->inQueue.endStream();
+
+  //let dowstreamOps now that input is done
+  if(downstreamOps.empty() != true){
+    for(auto op : downstreamOps){
+      op->numInputsDone += 1;
+      op->inQueue.endStream();
+    }
   }
   //std::cout << "This operator is done" << std::endl;
 }

@@ -4,9 +4,13 @@
 
 void InputOperator::generate() {
   generateData();
-  if (downstreamOp != nullptr) {
-    //may need a mutex on this TODO
-    downstreamOp->numInputsDone += 1;
-    downstreamOp->inQueue.endStream();
+
+  //let dowstreamOps now that input is done
+  if(downstreamOps.empty() != true){
+    for(auto op : downstreamOps){
+      op->numInputsDone += 1;
+      op->inQueue.endStream();
+    }
   }
+
 }

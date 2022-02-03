@@ -2,12 +2,16 @@
 #include "GenericOperator.h"
 
 void Operator::connectTo(GenericOperator* op) { 
-  downstreamOp = op;
-  downstreamOp->numInputs += 1;
+  //add operator to list of downstream ops
+  downstreamOps.push_back(op);
+  downstreamOps.back()->numInputs += 1;
 }
 
 void Operator::emit(int data){
-  downstreamOp->inQueue.push(data);
+  //give data to all downstream ops
+  for(auto op : downstreamOps){
+    op->inQueue.push(data);
+  }
 }
 
 

@@ -17,6 +17,6 @@ find_package(Threads REQUIRED)
 
 add_library(VanJamSPE STATIC src/Operator.cpp src/InputOperator.cpp src/GenericOperator.cpp src/Engine.cpp)
 
-add_executable(input_test apps/input_test.cpp)
-target_link_libraries(input_test VanJamSPE Threads::Threads)
+add_executable(output_test apps/output_test.cpp)
+target_link_libraries(output_test VanJamSPE Threads::Threads)
 
