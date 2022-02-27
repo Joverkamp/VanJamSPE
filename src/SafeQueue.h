@@ -5,10 +5,11 @@
 #include <mutex>
 #include <any>
 
-template <typename T>
+#include "Data.h"
+
 class SafeQueue{
   private:
-    std::queue<T> q;
+    std::queue<Data> q;
     std::mutex m;
     bool streamEnd = false;
 
@@ -21,15 +22,15 @@ class SafeQueue{
       return q.empty();
     }
 
-    void push(T item){
+    void push(Data item){
       m.lock();
       q.push(item);
       m.unlock();
     }
 
-    T pop(){
+    Data pop(){
       m.lock();
-      T retVal = q.front();
+      Data retVal = q.front();
       q.pop();
       m.unlock();
       return retVal;

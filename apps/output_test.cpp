@@ -4,17 +4,20 @@
 
 class PrintOp : public GenericOperator {
   public:  
-    void processData(std::any data){
+    void processData(Data data){
       //std::cout << "printOp " <<  data << std::endl;
-      std::cout << std::any_cast<int>(data) << std::endl;
+      //std::cout << std::any_cast<int>(data) << std::endl;
+      std::cout << std::any_cast<int>(data.data) << std::endl;
     }
 };
 
 class IncrementOp : public GenericOperator {
   public:  
-    void processData(std::any data){
+    void processData(Data data){
       //std::cout << "incrementOp emitting(" << data+1 << ")\n";
-      emit(std::any_cast<int>(data)+1);    
+      //int val = std::any_cast<int>(data.data)+1;    
+      data.data = std::any_cast<int>(data.data)+1;    
+      emit(data);    
     }
 };
 
@@ -23,7 +26,7 @@ class EvenNumbersOp : public InputOperator {
     void generateData(){
       for(int i = 0; i < 100; i+=2){
         //std::cout << "numbersOp emitting(" << i << ")\n";
-        emit(i);
+        emit(Data(i));
       }
     }
 };
@@ -33,7 +36,7 @@ class OddNumbersOp : public InputOperator {
     void generateData(){
       for(int i = 1; i < 100; i+=2){
         //std::cout << "numbersOp emitting(" << i << ")\n";
-        emit(i);
+        emit(Data(i));
       }
     }
 };
