@@ -14,9 +14,7 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 #target_link_libraries(my_app PRIVATE Threads::Threads)
 
-
 add_library(VanJamSPE STATIC src/Operator.cpp src/InputOperator.cpp src/GenericOperator.cpp src/Engine.cpp)
 
 add_executable(output_test apps/output_test.cpp)
 target_link_libraries(output_test VanJamSPE Threads::Threads)
-
