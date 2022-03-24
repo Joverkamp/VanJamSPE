@@ -1,11 +1,11 @@
-#include "GenericOperator.h"
+#include "UnaryOperator.h"
 
-/*
-void GenericOperator::execute(){
+
+void UnaryOperator::execute(){
   //process data while stream is not closed and queue isnot empty
   while(numInputs != numInputsDone || inQueue.empty() == false){
     if(inQueue.empty() == false){
-      processData(inQueue.pop());  
+      processData(inQueue.pop());
     }
   }
 
@@ -18,4 +18,3 @@ void GenericOperator::execute(){
   }
   //std::cout << "This operator is done" << std::endl;
 }
-*/

@@ -2,7 +2,7 @@
 #include <algorithm>
 #include "VanJamSPE.h"
 
-class PrintOp : public GenericOperator {
+class PrintOp : public UnaryOperator {
   public:  
     void processData(int data){
       //std::cout << "printOp " <<  data << std::endl;
@@ -10,7 +10,7 @@ class PrintOp : public GenericOperator {
     }
 };
 
-class IncrementOp : public GenericOperator {
+class IncrementOp : public UnaryOperator {
   public:  
     void processData(int data){
       //std::cout << "incrementOp emitting(" << data+1 << ")\n";
@@ -39,8 +39,11 @@ int main(){
 
   Engine engine;
   engine.registerInputOperator(&op1);
-  engine.registerGenericOperator(&op2);
-  engine.registerGenericOperator(&op3);
+//  engine.registerGenericOperator(&op2);
+//  engine.registerGenericOperator(&op3);
+  engine.registerUnaryOperator(&op2);
+  engine.registerUnaryOperator(&op3);
+
   engine.run();
 
   return 0;

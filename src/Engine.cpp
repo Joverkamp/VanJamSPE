@@ -7,7 +7,13 @@ void Engine::registerInputOperator(InputOperator* op) {
   inputOps.push_back(op);
 }
 
+/*
 void Engine::registerGenericOperator(GenericOperator* op) {
+  genericOps.push_back(op);
+}
+*/
+
+void Engine::registerUnaryOperator(UnaryOperator* op) {
   genericOps.push_back(op);
 }
 

@@ -4,6 +4,7 @@
 #include "Data.h"
 
 class GenericOperator;
+class UnaryOperator;
 
 class Operator {
   protected:
@@ -12,5 +13,6 @@ class Operator {
   public:
     void emit(Data data);
 
-    void connectTo(GenericOperator* op);
+//    void connectTo(GenericOperator* op);
+    void connectTo(UnaryOperator* op);
 };
