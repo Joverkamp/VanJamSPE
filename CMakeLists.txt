@@ -6,9 +6,10 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_BUILD_TYPE Debug)
 
+find_package(OpenCV REQUIRED)
+
 link_directories(build)
 include_directories(src)
-
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
@@ -16,5 +17,8 @@ find_package(Threads REQUIRED)
 
 add_library(VanJamSPE STATIC src/Operator.cpp src/InputOperator.cpp src/GenericOperator.cpp src/Engine.cpp)
 
-add_executable(output_test apps/output_test.cpp)
-target_link_libraries(output_test VanJamSPE Threads::Threads)
+#add_executable(output_test apps/output_test.cpp)
+add_executable(faceDetection apps/faceDetection.cpp)
+
+#target_link_libraries(output_test VanJamSPE Threads::Threads)
+target_link_libraries(faceDetection VanJamSPE Threads::Threads ${OpenCV_LIBS})
