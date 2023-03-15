@@ -4,6 +4,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include "VanJamSPE.h"
+#include <windows.h>
 
 using namespace std;
 using namespace cv;
@@ -23,6 +24,7 @@ public:
 		Mat frame = fd.frame;
 		vector<Rect> faces = fd.faces;
 
+		
 		//draw face rectangles
 		for (Rect area : faces) {
 
@@ -35,13 +37,10 @@ public:
 
 		//display frame
 		imshow("Webcam Frame", frame);
+		waitKey(1);
 
-		//exit on key press
-		//if (waitKey(30) >= 0) {
-		//    break;
-	   // }
 
-		std::cout << std::any_cast<int>(data.data) << std::endl;
+		std::cout << "#Faces: " << fd.faces.size() << std::endl;
 	}
 };
 
@@ -56,7 +55,7 @@ public:
 		CascadeClassifier faceCascade;
 
 		//pre-trained model used for detecting frontal face
-		faceCascade.load("C:\\Program Files\\opencv\\build\\etc\\haarcascades\\haarcascade_frontalface_default.xml");
+		faceCascade.load("D:\\Drivers\\opencv\\build\\etc\\haarcascades\\haarcascade_frontalface_default.xml");
 
 		//open video capture
 		VideoCapture cap(0);
@@ -82,29 +81,22 @@ public:
 			FaceData fd;
 			fd.frame = frame;
 			fd.faces = faces;
-			emit(Data((fd));
+			emit(Data((fd)));
 		}
 	}
 };
 
 int main()
 {
-	//draw face rectangles
-	for (Rect area : faces) {
+	VideoCaptureOp videoFaceDetection;
+	DisplayFacesOp faceDrawing;
 
-		Scalar drawColor = Scalar(0, 255, 0);
+	videoFaceDetection.connectTo(&faceDrawing);
 
-		rectangle(frame, Point(cvRound(area.x * scale), cvRound(area.y * scale)),
-			Point(cvRound((area.x + area.width - 1) * scale), cvRound((area.y + area.height - 1) * scale)),
-			drawColor);
-	}
+	Engine engine;
+	engine.registerInputOperator(&videoFaceDetection);
+	engine.registerGenericOperator(&faceDrawing);
+	engine.run();
 
-	//display frame
-	imshow("Webcam Frame", frame);
-
-	//exit on key press
-	if (waitKey(30) >= 0) {
-		break;
-	}
-}
+	return 0;
 }

@@ -19,6 +19,8 @@ add_library(VanJamSPE STATIC src/Operator.cpp src/InputOperator.cpp src/GenericO
 
 #add_executable(output_test apps/output_test.cpp)
 add_executable(faceDetection apps/faceDetection.cpp)
+#add_executable(simple_test apps/simple_test.cpp)
 
 #target_link_libraries(output_test VanJamSPE Threads::Threads)
 target_link_libraries(faceDetection VanJamSPE Threads::Threads ${OpenCV_LIBS})
+#target_link_libraries(simple_test VanJamSPE Threads::Threads)
